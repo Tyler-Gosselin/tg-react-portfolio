@@ -9,6 +9,14 @@ export default class PortfolioContainer extends Component {
     console.log("Portfolio container has been rendered")
   }
   
+  portfolioItems() {
+    const data = ["Vestas", "Cargill", "Army", "Handy Vets"];
+
+    return data.map(item => {
+      return <PortfolioItem />;
+    })
+  }
+
   // State
   // Lifecycle Methods
   render() {
@@ -16,7 +24,7 @@ export default class PortfolioContainer extends Component {
       <div>
         <h2>Portfolio items go here</h2>
 
-        <PortfolioItem />
+        {this.portfolioItems()}
       </div>
     )
   }
