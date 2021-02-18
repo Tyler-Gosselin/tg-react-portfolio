@@ -10,7 +10,7 @@ export default class PortfolioContainer extends Component {
     this.state = {
       pageTitle: "Welcome to my portfolio",
       isLoading: false,
-      data: []
+      data: [],
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -29,8 +29,8 @@ export default class PortfolioContainer extends Component {
       .get("https://tylergosselin.devcamp.space/portfolio/portfolio_items")
       .then((response) => {
         this.setState({
-          data: response.data.portfolio_items
-        })
+          data: response.data.portfolio_items,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -39,8 +39,14 @@ export default class PortfolioContainer extends Component {
 
   portfolioItems() {
     return this.state.data.map((item) => {
+      console.log("portfolio item", item)
       return (
-        <PortfolioItem key={item.id} title={item.name} url={item.url} slug={item.id} />
+        <PortfolioItem
+          key={item.id}
+          title={item.name}
+          url={item.url}
+          slug={item.id}
+        />
       );
     });
   }
@@ -53,7 +59,7 @@ export default class PortfolioContainer extends Component {
     if (this.state.isLoading) {
       return <div>Loading...</div>;
     }
-   
+
     return (
       <div>
         <h2>{this.state.pageTitle}</h2>
