@@ -38,6 +38,11 @@ export default class PortfolioContainer extends Component {
   }
 
   portfolioItems() {
+    // Data that we need
+    // - background image: thumb_image_url
+    // - logo: logo_url
+    // - description: description
+    // - id: id
     return this.state.data.map((item) => {
       // console.log("portfolio item", item)
       return (
