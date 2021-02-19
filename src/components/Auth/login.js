@@ -6,7 +6,7 @@ export default class Login extends Component {
 
     this.state = {
       email: "",
-      password: "",
+      password: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,12 +15,13 @@ export default class Login extends Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   }
 
   handleSubmit(event) {
-    console.log("Handle Change", event);
+    console.log("Handle submit", this.state.email, this.state.password);
+    event.preventDefault();
   }
 
   render() {
@@ -32,14 +33,15 @@ export default class Login extends Component {
           <input
             type="email"
             name="email"
-            placeholder="Your Email"
+            placeholder="Your email"
             value={this.state.email}
             onChange={this.handleChange}
           />
+
           <input
             type="password"
             name="password"
-            placeholder="Your Password"
+            placeholder="Your password"
             value={this.state.password}
             onChange={this.handleChange}
           />
