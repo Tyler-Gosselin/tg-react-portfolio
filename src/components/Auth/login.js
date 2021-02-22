@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -6,7 +8,7 @@ export default class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,12 +17,26 @@ export default class Login extends Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
 
   handleSubmit(event) {
-    console.log("Handle submit", this.state.email, this.state.password);
+    axios
+      .post(
+        "https://api.devcamp.space/sessions",
+        {
+          client: {
+            email: this.state.email,
+            password: this.state.password,
+          },
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        console.log("response", response);
+      });
+
     event.preventDefault();
   }
 
