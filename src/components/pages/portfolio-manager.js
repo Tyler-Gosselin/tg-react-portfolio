@@ -20,7 +20,17 @@ export default class PortfolioManager extends Component {
   }
 
   handleDeleteClick(portfolioItem) {
-    console.log("handleDeleteClick", portfolioItem);
+    axios
+      .delete(
+        `https://api.devcamp.space/portfolio/portfolio_items/${portfolioItem.id}`,
+        { withCredentials: true }
+      )
+      .then((response) => {
+        console.log("response from delete", response);
+      })
+      .catch((error) => {
+        console.log("handleDeleteClick error", error);
+      });
   }
 
   handleSuccessfulFormSubmission(portfolioItem) {
