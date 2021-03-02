@@ -22,10 +22,17 @@ class Blog extends Component {
   activateInfiniteScroll() {
     window.onscroll = () => {
       if (
+        this.state.isLoading ||
+        this.state.blogItems.length === this.state.totalCount
+      ) {
+        return;
+      }
+
+      if (
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight
       ) {
-        console.log("get more posts");
+        this.getBlogItems();
       }
     };
   }
@@ -36,12 +43,16 @@ class Blog extends Component {
     });
 
     axios
-      .get("https://tylergosselin.devcamp.space/portfolio/portfolio_blogs", {
-        withCredentials: true,
-      })
+      .get(
+        `https://tylergosselin.devcamp.space/portfolio/portfolio_blogs?page=${this.state.currentPage}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) => {
+        console.log("getting", response.data);
         this.setState({
-          blogItems: response.data.portfolio_blogs,
+          blogItems: this.state.blogItems.concat(response.data.portfolio_blogs),
           totalCount: response.data.meta.total_records,
           isLoading: false,
         });
@@ -65,9 +76,10 @@ class Blog extends Component {
         <div className="content-container">{blogRecords}</div>
 
         {this.state.isLoading ? (
-        <div className="content-loader">
-          <FontAwesomeIcon icon="spinner" spin />
-        </div> ) : null }
+          <div className="content-loader">
+            <FontAwesomeIcon icon="spinner" spin />
+          </div>
+        ) : null}
       </div>
     );
   }
