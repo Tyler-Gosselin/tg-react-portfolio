@@ -1,5 +1,5 @@
-import { faTshirt } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
+import axios from "axios";
 
 class BlogForm extends Component {
   constructor(props) {
@@ -14,8 +14,29 @@ class BlogForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  buildForm() {
+    let formData = new FormData();
+
+    formData.append("portfolio_blog[title]", this.state.title);
+    formData.append("portfolio_blog[blog_status]", this.state.blog_status);
+
+    return formData;
+  }
+
   handleSubmit(event) {
-    this.props.handleSuccessfulFormSubmisson(this.state);
+    axios
+      .post(
+        "https://tylergosselin.devcamp.space/portfolio/portfolio_blogs",
+        this.buildForm(),
+        { withCredentials: true }
+      )
+      .then((response) => {
+        this.props.handleSuccessfulFormSubmisson(response.data);
+      })
+      .catch((error) => {
+        console.log("handleSubmit for blog error", error);
+      });
+
     event.preventDefault();
   }
 
