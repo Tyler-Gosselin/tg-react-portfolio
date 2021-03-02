@@ -22,6 +22,14 @@ class BlogModal extends Component {
         backgroundColor: "rgba(1, 1, 1, 0.75)",
       },
     };
+
+    this.handleSuccessfulFormSubmisson = this.handleSuccessfulFormSubmisson.bind(
+      this
+    );
+  }
+
+  handleSuccessfulFormSubmisson(blog) {
+    console.log("blog from blog form", blog);
   }
 
   render() {
@@ -33,7 +41,9 @@ class BlogModal extends Component {
         }}
         isOpen={this.props.modalIsOpen}
       >
-        <BlogForm />
+        <BlogForm
+          handleSuccessfulFormSubmisson={this.handleSuccessfulFormSubmisson}
+        />
       </ReactModal>
     );
   }
