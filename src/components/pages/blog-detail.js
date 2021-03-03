@@ -4,7 +4,7 @@ import ReactHtmlParser from "react-html-parser";
 
 import BlogFeaturedImage from "../blog/blog-featured-image";
 
-class BlogDetail extends Component {
+export default class BlogDetail extends Component {
   constructor(props) {
     super(props);
 
@@ -54,5 +54,3 @@ class BlogDetail extends Component {
     );
   }
 }
-
-export default BlogDetail;
