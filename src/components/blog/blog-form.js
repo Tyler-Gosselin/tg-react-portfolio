@@ -119,7 +119,6 @@ export default class BlogForm extends Component {
           featured_image: "",
         });
         if (this.props.editMode) {
-          // update blog detail
           this.props.handleUpdateFormSubmission(response.data.portfolio_blog);
         } else {
           this.props.handleSuccessfullFormSubmission(
