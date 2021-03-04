@@ -4,14 +4,17 @@ import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 
-class RichTextEditor extends Component {
+export default class RichTextEditor extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       editorState: EditorState.createEmpty(),
     };
 
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
+    this.getBase64 = this.getBase64.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
   }
 
   onEditorStateChange(editorState) {
@@ -23,8 +26,17 @@ class RichTextEditor extends Component {
     );
   }
 
+  getBase64(file, callback) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => callback(reader.result);
+    reader.onerror = (error) => {};
+  }
+
   uploadFile(file) {
-    console.log("upload file", file);
+    return new Promise((resolve, reject) => {
+      this.getBase64(file, (data) => resolve({ data: { link: data } }));
+    });
   }
 
   render() {
@@ -33,7 +45,7 @@ class RichTextEditor extends Component {
         <Editor
           editorState={this.state.editorState}
           wrapperClassName="demo-wrapper"
-          editorClassName="demo-editor"
+          editorClassname="demo-editor"
           onEditorStateChange={this.onEditorStateChange}
           toolbar={{
             inline: { inDropdown: true },
@@ -53,5 +65,3 @@ class RichTextEditor extends Component {
     );
   }
 }
-
-export default RichTextEditor;

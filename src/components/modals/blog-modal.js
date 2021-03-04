@@ -5,7 +5,7 @@ import BlogForm from "../blog/blog-form";
 
 ReactModal.setAppElement(".app-wrapper");
 
-class BlogModal extends Component {
+export default class BlogModal extends Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,7 @@ class BlogModal extends Component {
         left: "50%",
         right: "auto",
         marginRight: "-50%",
-        transform: "translate(-50%, -50%)",
+        transform: "translate(-50%, -50%",
         width: "800px",
       },
       overlay: {
@@ -23,12 +23,12 @@ class BlogModal extends Component {
       },
     };
 
-    this.handleSuccessfulFormSubmisson = this.handleSuccessfulFormSubmisson.bind(
+    this.handleSuccessfullFormSubmission = this.handleSuccessfullFormSubmission.bind(
       this
     );
   }
 
-  handleSuccessfulFormSubmisson(blog) {
+  handleSuccessfullFormSubmission(blog) {
     this.props.handleSuccessfulNewBlogSubmission(blog);
   }
 
@@ -42,11 +42,9 @@ class BlogModal extends Component {
         isOpen={this.props.modalIsOpen}
       >
         <BlogForm
-          handleSuccessfulFormSubmisson={this.handleSuccessfulFormSubmisson}
+          handleSuccessfullFormSubmission={this.handleSuccessfullFormSubmission}
         />
       </ReactModal>
     );
   }
 }
-
-export default BlogModal;
