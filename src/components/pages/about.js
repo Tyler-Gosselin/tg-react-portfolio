@@ -1,14 +1,17 @@
 import React from "react";
-import profilePicture from "../../../static/assets/images/bio/edutechional.jpg"
+import profilePicture from "../../../static/assets/images/bio/edutechional.jpg";
 
 export default function () {
   return (
     <div className="content-page-wrapper">
-      <div className="left-column" style={{
-        background: "url(" + profilePicture + ") no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center"
-      }}></div>
+      <div
+        className="left-column"
+        style={{
+          background: "url(" + profilePicture + ") no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
       <div className="right-column">
         Maecenas faucibus mollis interdum. Integer posuere erat a ante venenatis
         dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis.
