@@ -1,5 +1,5 @@
 {
-  "name": "df-ben-portfolio",
+  "name": "tg-react-portfolio",
   "version": "1.0.0",
   "description": "Personal portfolio app built in React.",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Benjibuns/df-ben-portfolio.git"
+    "url": "git@github.com:Tyler-Gosselin/tg-react-portfolio.git"
   },
   "keywords": [
     "es6",
@@ -25,12 +25,12 @@
     "sass",
     "css module"
   ],
-  "author": "Benjamin Rivera",
+  "author": "Tyler Gosselin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Benjibuns/df-ben-portfolio/issues"
+    "url": "https://github.com/Tyler-Gosselin/tg-react-portfolio/issues"
   },
-  "homepage": "https://github.com/Benjibuns/df-ben-portfolio.git",
+  "homepage": "https://github.com/Tyler-Gosselin/tg-react-portfolio",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
