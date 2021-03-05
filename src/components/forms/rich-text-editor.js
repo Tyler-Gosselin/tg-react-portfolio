@@ -9,7 +9,7 @@ export default class RichTextEditor extends Component {
     super(props);
 
     this.state = {
-      editorState: EditorState.createEmpty(),
+      editorState: EditorState.createEmpty()
     };
 
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
@@ -43,12 +43,12 @@ export default class RichTextEditor extends Component {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => callback(reader.result);
-    reader.onerror = (error) => {};
+    reader.onerror = error => {};
   }
 
   uploadFile(file) {
     return new Promise((resolve, reject) => {
-      this.getBase64(file, (data) => resolve({ data: { link: data } }));
+      this.getBase64(file, data => resolve({ data: { link: data } }));
     });
   }
 
@@ -70,8 +70,8 @@ export default class RichTextEditor extends Component {
               uploadCallback: this.uploadFile,
               alt: { present: true, mandatory: false },
               previewImage: true,
-              inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
-            },
+              inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg"
+            }
           }}
         />
       </div>
